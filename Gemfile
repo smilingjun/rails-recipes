@@ -8,19 +8,26 @@ end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.2'
-
 gem 'bootstrap-sass'
-
 gem 'devise'
 
 gem "rails-i18n"
-
 gem "devise-i18n"
-
 gem "select2-rails"
 gem "nested_form_fields"
+
 gem "bootstrap-datepicker-rails"
 gem 'ckeditor'
+
+gem 'ranked-model'
+gem 'jquery-ui-rails'
+gem 'kaminari'
+gem 'ransack'
+
+gem 'carrierwave'
+gem 'mini_magick'
+
+
 
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'

@@ -1,4 +1,13 @@
 class Event < ApplicationRecord
+  include RankedModel
+  ranks :row_order
+  mount_uploader :logo, EventLogoUploader
+  mount_uploaders :images, EventImageUploader
+  serialize :images, JSON
+
+  has_many :registrations, :dependent => :destroy
+  has_many :attachments, :class_name => "EventAttachment", :dependent => :destroy
+  accepts_nested_attributes_for :attachments, :allow_destroy => true, :reject_if => :all_blank
 
  validates_presence_of :name, :friendly_id
  validates_uniqueness_of :friendly_id
@@ -22,4 +31,7 @@ class Event < ApplicationRecord
 
  STATUS = ["draft", "public", "private"]
  validates_inclusion_of :status, :in => STATUS
+
+ scope :only_public, -> { where(:status => "public")}
+ scope :only_available, -> { where( :status => ["public", "private"])}
 end
