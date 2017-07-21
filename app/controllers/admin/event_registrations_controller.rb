@@ -1,3 +1,4 @@
+require 'csv'
 class Admin::EventRegistrationsController < AdminController
 
    before_action :find_event

@@ -17,6 +17,11 @@ Rails.application.routes.draw do
 
   namespace :admin do
     root "events#index"
+
+    resources :versions do
+      post :undo
+    end
+
     resources :events do
       resources :registrations, :controller => "event_registrations"
       resources :tickets, :controller => "event_tickets"
@@ -38,6 +43,7 @@ Rails.application.routes.draw do
   get "/faq" => "pages#faq"
 
   resource :user
+
 
 
 

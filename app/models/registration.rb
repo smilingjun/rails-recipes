@@ -7,6 +7,8 @@ class Registration < ApplicationRecord
   validates_presence_of :name, :email, :cellphone, :bio, :if => :should_validate_all_data?
   validate :check_event_status, :on => :create
 
+  has_paper_trail
+
 
 
   belongs_to :event
