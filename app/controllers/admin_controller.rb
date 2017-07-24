@@ -3,6 +3,23 @@ class AdminController < ApplicationController
 
   before_action :authenticate_user!
 
+
   layout "admin"
+
+  protected
+
+  def require_admin!
+    unless current_user.is_admin?
+      flash[:alert] = "您的权限不足"
+      redirect_to root_path
+    end
+  end
+
+  def require_editor!
+    unless current_user.role != "editor" && current_user != "admin"
+      flash[:alert] = "您的权限不足"
+      redirect_to root_path
+    end
+  end
 
 end

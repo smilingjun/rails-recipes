@@ -1,5 +1,5 @@
 class Registration < ApplicationRecord
-  STATUS = ["pending", "confirmed"]
+  STATUS = ["pending", "confirmed", "cancelled"]
   validates_inclusion_of :status, :in => STATUS
   validates_presence_of :status, :ticket_id
   attr_accessor :current_step
